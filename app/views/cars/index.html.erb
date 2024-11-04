@@ -1,26 +1,46 @@
-<h1>Cars</h1>
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-base font-semibold text-gray-900">Cars</h1>
+      <p class="mt-2 text-sm text-gray-700">A list of all the cars rendered at <%= Time.now %>.</p>
+    </div>
+  </div>
 
-<form method="get" action="<%= cars_path %>">
-  <input type="text" name="search" placeholder="Search by make or model" value="<%= params[:search] %>">
-</form>
+  <form method="get" action="<%= cars_path %>">
+    <div>
+      <label for="search" class="block text-sm/6 font-medium text-gray-900">Seach cars</label>
+      <div class="relative mt-2 flex items-center">
+        <input type="text" name="search" id="search" value="<%= params[:search] %>" placeholder="Search by make or model" class="block w-full rounded-md border-0 py-1.5 pr-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+      </div>
+    </div>
+  </form>
 
-<table>
-  <thead>
-    <tr>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cars.each do |car| %>
-      <tr>
-        <td><%= car.make %></td>
-        <td><%= car.model %></td>
-        <td><%= car.year %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Make</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Model</th>
+                <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Year</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white">
 
-<%== pagy_nav(@pagy) %>
+              <% @cars.each do |car| %>
+                <tr>
+                  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= car.make %></td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= car.model %></td>
+                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= car.year %></td></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <%== pagy_nav(@pagy) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

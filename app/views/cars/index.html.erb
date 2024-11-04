@@ -1,0 +1,26 @@
+<h1>Cars</h1>
+
+<form method="get" action="<%= cars_path %>">
+  <input type="text" name="search" placeholder="Search by make or model" value="<%= params[:search] %>">
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.make %></td>
+        <td><%= car.model %></td>
+        <td><%= car.year %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%== pagy_nav(@pagy) %>

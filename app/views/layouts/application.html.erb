@@ -18,10 +18,35 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-      <p class="mt-2 text-sm text-gray-700">Page rendered at <%= Time.now %>.</p>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="border border-gray-500 border-4">
+    <p class="uppercase mt-2 text-sm text-gray-700 font-extrabold p-2">Body timestamp <%= Time.now %>.</p>
+    <main class="container mx-auto mt-28 px-5 flex ">
       <%= yield %>
     </main>
   </body>
 </html>
+
+<br><br><br>
+1. Ensure the search function operates correctly.<br>
+   - When searching by a car make or model and pressing enter, the table should update with the new results.<br>
+   - Pagination should accurately reflect the number of searched results.<br>
+   - The input field should retain the searched value.<br>
+
+<br>
+
+2. Implement a "search as you type" feature using a Stimulus controller for automatic requests.<br>
+   - Send search requests dynamically while typing, eliminating the need to press enter.<br>
+   - Optional: Introduce a throttle to manage the frequency of requests.<br>
+
+<br>
+
+3. Enhance the styling and positioning of pagination (no specific requests, just improve overall appearance).<br>
+   - TIP: Use a global search for "border border-" to identify and disable all borders if it helps while working on this.<br>
+
+<br>
+
+4. Wrap the cars index (the container with the red border) in a Turbo Frame to ensure that only that frame refreshes during searches.<br>
+   - Ensure that the input retains its value.<br>
+   - Ensure that the input remains focused.<br>
+   - Ensure that the Body timestamp remains unchanged while the Cars index timestamp updates with each search request.<br>
+   - Ensure that pagination functions correctly.<br>
